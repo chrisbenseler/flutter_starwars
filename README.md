@@ -1,16 +1,22 @@
-# flutter_starwars
+# Flutter Star Wars
 
-A new Flutter project.
+Sample Flutter project, consuming [Star Wars API](https://swapi.co/).
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Install dependencies
+```sh
+flutter pub get
+```
 
-A few resources to get you started if this is your first Flutter project:
+run app
+```sh
+flutter run
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+and enjoy!
 
+## Flutter
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
