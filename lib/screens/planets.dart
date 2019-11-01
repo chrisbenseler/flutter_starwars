@@ -2,21 +2,6 @@ import 'package:flutter/material.dart';
 import '../models/planet.dart';
 import '../API.dart';
 
-Widget _generateItem(Planet item) {
-  return new Container(
-    padding: const EdgeInsets.all(30.0),
-    child: new Row(
-      children: <Widget>[
-        new Expanded(
-            child: new Text(item.name,
-                style: new TextStyle(
-                  fontSize: 24.0
-                )))
-      ],
-    ),
-  );
-}
-
 class Planets extends StatefulWidget {
   Planets({Key key}) : super(key: key);
 
@@ -25,12 +10,34 @@ class Planets extends StatefulWidget {
 }
 
 class _PlanetsState extends State<Planets> {
-
   List planets = <Planet>[];
   int page = 1;
   bool isLoading = false;
   ScrollController controller;
   bool hasNext = false;
+
+  Widget _generateItem(Planet item) {
+    return new Container(
+      padding: const EdgeInsets.all(16.0),
+      child: ListTile(
+        title: new Text(item.name, style: new TextStyle(fontSize: 24.0)),
+        subtitle: new Container(
+            child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            new Text('Population ' + item.population,
+                style: new TextStyle(fontSize: 14.0)),
+          ],
+        )),
+        trailing: Icon(Icons.keyboard_arrow_right),
+        onLongPress: () {
+          // do something else
+          debugPrint('long press');
+          Navigator.of(context).pushNamed('/planets/2');
+        },
+      ),
+    );
+  }
 
   @override
   void initState() {
@@ -40,7 +47,6 @@ class _PlanetsState extends State<Planets> {
     });
     _getNextPlanets();
     controller = new ScrollController()..addListener(_scrollListener);
-    
   }
 
   @override
@@ -50,7 +56,6 @@ class _PlanetsState extends State<Planets> {
   }
 
   _getNextPlanets() async {
-    
     var response = await API.getPlanets(page);
     setState(() {
       isLoading = false;
@@ -61,8 +66,8 @@ class _PlanetsState extends State<Planets> {
   }
 
   void _scrollListener() {
-
-    if (hasNext && controller.position.pixels == controller.position.maxScrollExtent) {
+    if (hasNext &&
+        controller.position.pixels == controller.position.maxScrollExtent) {
       page++;
       setState(() {
         isLoading = true;
@@ -78,15 +83,13 @@ class _PlanetsState extends State<Planets> {
         body: Stack(
           children: <Widget>[
             ListView.builder(
-              controller: controller,
-              itemCount: planets.length,
-              itemBuilder: (BuildContext ctxt, int index) {
-                return _generateItem(planets[index]);
-              }
-            ),
+                controller: controller,
+                itemCount: planets.length,
+                itemBuilder: (BuildContext ctxt, int index) {
+                  return _generateItem(planets[index]);
+                }),
             _loader()
           ],
-           
         ));
   }
 

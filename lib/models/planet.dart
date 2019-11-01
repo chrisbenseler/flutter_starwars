@@ -1,9 +1,11 @@
 class Planet {
   String name;
+  String population;
   
-  Planet({this.name});
+  Planet({this.name, this.population});
 
   Planet.fromJson(Map<String, dynamic> jsonMap) :
-    name = jsonMap['name'];
+    name = jsonMap['name'],
+    population = jsonMap['population'];
   
 }
