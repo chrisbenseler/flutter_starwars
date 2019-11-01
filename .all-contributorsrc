@@ -1,0 +1,24 @@
+{
+  "projectName": "flutter_starwars",
+  "projectOwner": "chrisbenseler",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "tupizz",
+      "name": "Tadeu Tupinambá",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/15824865?v=4",
+      "profile": "https://www.linkedin.com/in/tadeutupinamba/",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
