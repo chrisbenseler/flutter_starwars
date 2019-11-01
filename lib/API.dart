@@ -7,8 +7,8 @@ import 'models/planet.dart';
 const baseUrl = 'https://swapi.co/api/';
 
 class API {
-  static Future getPlanets() async {
-    String url = baseUrl + 'planets';
+  static Future getPlanets(int page) async {
+    String url = baseUrl + 'planets/?page=' + page.toString();
   
     final response = await http.get(url);
 
@@ -16,6 +16,9 @@ class API {
     List<Planet> planets = planetsRaw.map( (raw) {
       return Planet.fromJson(raw);
     }).toList();
-    return planets;
+    return {
+      "planets": planets,
+      "next": json.decode(response.body)['next'] != null
+    };
   }
 }

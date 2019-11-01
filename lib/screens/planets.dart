@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 import '../models/planet.dart';
 import '../API.dart';
 
+Widget _generateItem(Planet item) {
+  return new Container(
+    padding: const EdgeInsets.all(30.0),
+    child: new Row(
+      children: <Widget>[
+        new Expanded(
+            child: new Text(item.name,
+                style: new TextStyle(
+                  fontSize: 24.0
+                )))
+      ],
+    ),
+  );
+}
+
 class Planets extends StatefulWidget {
   Planets({Key key}) : super(key: key);
 
@@ -9,51 +24,87 @@ class Planets extends StatefulWidget {
   _PlanetsState createState() => _PlanetsState();
 }
 
-
 class _PlanetsState extends State<Planets> {
-  Future planets;
+
+  List planets = <Planet>[];
+  int page = 1;
+  bool isLoading = false;
+  ScrollController controller;
+  bool hasNext = false;
 
   @override
   void initState() {
     super.initState();
-    planets = API.getPlanets();
+    setState(() {
+      isLoading = true;
+    });
+    _getNextPlanets();
+    controller = new ScrollController()..addListener(_scrollListener);
+    
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+  }
+
+  _getNextPlanets() async {
+    
+    var response = await API.getPlanets(page);
+    setState(() {
+      isLoading = false;
+      List<Planet> newPlanets = response['planets'];
+      planets.addAll(newPlanets);
+      hasNext = response['next'];
+    });
+  }
+
+  void _scrollListener() {
+
+    if (hasNext && controller.position.pixels == controller.position.maxScrollExtent) {
+      page++;
+      setState(() {
+        isLoading = true;
+      });
+      _getNextPlanets();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(title: new Text('Planets')),
-        body: Container(
-          child: FutureBuilder(
-            future: planets,
-            builder: (context, snapshot) {
-
-              if (snapshot.hasData) {
-      
-                List<Planet> planets = snapshot.data;
- 
-                return ListView.builder(
-                    itemCount: planets.length,
-                    itemBuilder: (BuildContext ctxt, int index) {
-                      return new Text(planets[index].name);
-                    });
-              } else if (snapshot.hasError) {
-                return Text("Error: ${snapshot.error}");
+        body: Stack(
+          children: <Widget>[
+            ListView.builder(
+              controller: controller,
+              itemCount: planets.length,
+              itemBuilder: (BuildContext ctxt, int index) {
+                return _generateItem(planets[index]);
               }
-
-              // By default, show a loading spinner.
-              return CircularProgressIndicator();
-
-            },
-          ),
-          /*
-       child: ListView.builder(
-         itemCount: planets.length,
-         itemBuilder: (BuildContext ctxt, int index) {
-          return new Text(planets[index].name);
-          }
-       ),
-       */
+            ),
+            _loader()
+          ],
+           
         ));
+  }
+
+  Widget _loader() {
+    return isLoading
+        ? new Align(
+            child: new Container(
+              width: 70.0,
+              height: 70.0,
+              child: new Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: new Center(child: new CircularProgressIndicator())),
+            ),
+            alignment: FractionalOffset.bottomCenter,
+          )
+        : new SizedBox(
+            width: 0.0,
+            height: 0.0,
+          );
   }
 }
