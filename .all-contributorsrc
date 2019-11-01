@@ -18,6 +18,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "chrisbenseler",
+      "name": "Christian Benseler",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1225447?v=4",
+      "profile": "http://www.chrisb.com.br",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7

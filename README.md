@@ -1,5 +1,5 @@
 # Flutter Star Wars
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Sample Flutter project, consuming [Star Wars API](https://swapi.co/).
 
@@ -32,6 +32,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://www.linkedin.com/in/tadeutupinamba/"><img src="https://avatars3.githubusercontent.com/u/15824865?v=4" width="100px;" alt="Tadeu Tupinambá"/><br /><sub><b>Tadeu Tupinambá</b></sub></a><br /><a href="https://github.com/chrisbenseler/flutter_starwars/commits?author=tupizz" title="Documentation">📖</a></td>
+    <td align="center"><a href="http://www.chrisb.com.br"><img src="https://avatars1.githubusercontent.com/u/1225447?v=4" width="100px;" alt="Christian Benseler"/><br /><sub><b>Christian Benseler</b></sub></a><br /><a href="https://github.com/chrisbenseler/flutter_starwars/commits?author=chrisbenseler" title="Documentation">📖</a></td>
   </tr>
 </table>
 
