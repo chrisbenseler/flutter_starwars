@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-import 'screens/home.dart';
-import 'screens/planet_detail.dart';
-import 'screens/planets.dart';
+import 'screens/home/home_page.dart';
+import 'screens/planets/planet_detail.dart';
+import 'screens/planets/planets_page.dart';
+import 'screens/movies/movies_page.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context) =>  MaterialApp(
+  Widget build(BuildContext context) => MaterialApp(
         title: 'Star Wars API',
         color: Colors.blue,
-        routes: <String, WidgetBuilder>{
-          '/home': (BuildContext context) => new Home(),
-          '/planets/2': (BuildContext context) => new PlanetDetail(),
-          '/planets': (BuildContext context) => new Planets(),
+        routes: {
+          '/home': (context) => new Home(),
+          '/planets/detail': (context) => new PlanetDetail(),
+          '/planets': (context) => new Planets(),
+          '/movies': (context) => new MoviesPage(),
         },
         home: Home(),
       );
-
-
 }
