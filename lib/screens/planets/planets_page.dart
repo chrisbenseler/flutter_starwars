@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../models/planet.dart';
-import '../API.dart';
+
+import '../../models/planet.dart';
+import '../../services/api.dart';
+import '../../shared/loader.dart';
 
 class Planets extends StatefulWidget {
   Planets({Key key}) : super(key: key);
@@ -33,7 +35,7 @@ class _PlanetsState extends State<Planets> {
         onLongPress: () {
           // do something else
           debugPrint('long press');
-          Navigator.of(context).pushNamed('/planets/2');
+          Navigator.of(context).pushNamed('/planets/detail');
         },
       ),
     );
@@ -88,26 +90,10 @@ class _PlanetsState extends State<Planets> {
                 itemBuilder: (BuildContext ctxt, int index) {
                   return _generateItem(planets[index]);
                 }),
-            _loader()
+            Loader(
+              isLoading: isLoading,
+            )
           ],
         ));
-  }
-
-  Widget _loader() {
-    return isLoading
-        ? new Align(
-            child: new Container(
-              width: 70.0,
-              height: 70.0,
-              child: new Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: new Center(child: new CircularProgressIndicator())),
-            ),
-            alignment: FractionalOffset.bottomCenter,
-          )
-        : new SizedBox(
-            width: 0.0,
-            height: 0.0,
-          );
   }
 }
