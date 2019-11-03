@@ -3,10 +3,19 @@ import 'package:flutter/material.dart';
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
 
-  RaisedButton _raisedButton(String label, String url, context) {
-    return new RaisedButton(
-      child: new Text(label, style: TextStyle(fontSize: 20.0)),
-      onPressed: () => Navigator.of(context).pushNamed(url),
+  Container _menuItem(String label, String url, Icon icon, context) {
+    return new Container(
+        padding: EdgeInsets.all(20.0),
+        child: new RaisedButton(
+        child: new Column(
+          children: <Widget>[
+            new Padding(padding: EdgeInsets.all(10.0),),
+            icon,
+            new Text(label, style: TextStyle(fontSize: 20.0))
+          ],
+        ),
+        onPressed: () => Navigator.of(context).pushNamed(url),
+      )
     );
   }
 
@@ -20,14 +29,8 @@ class Home extends StatelessWidget {
         body: GridView.count(
           crossAxisCount: 2,
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(20.0),
-              child: _raisedButton('Planets', '/planets', context),
-            ),
-            Container(
-              padding: EdgeInsets.all(20.0),
-              child: _raisedButton('Movies', '/movies', context),
-            )
+            _menuItem('Planets', '/planets', new Icon(Icons.location_on, size: 48.0,), context),
+            _menuItem('Movies', '/movies', new Icon(Icons.movie, size: 48.0,), context),
           ],
         )
       )
