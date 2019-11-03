@@ -18,7 +18,7 @@ class _PlanetsState extends State<Planets> {
   ScrollController controller;
   bool hasNext = false;
 
-  Widget _generateItem(Planet item) {
+  Widget _generateItem(Planet item, int index) {
     return new Container(
       padding: const EdgeInsets.all(16.0),
       child: ListTile(
@@ -32,10 +32,12 @@ class _PlanetsState extends State<Planets> {
           ],
         )),
         trailing: Icon(Icons.keyboard_arrow_right),
-        onLongPress: () {
+        onTap: () {
           // do something else
           debugPrint('long press');
-          Navigator.of(context).pushNamed('/planets/detail');
+          Navigator.of(context).pushNamed('/planets/detail', arguments: {
+            index
+          });
         },
       ),
     );
@@ -88,7 +90,7 @@ class _PlanetsState extends State<Planets> {
                 controller: controller,
                 itemCount: planets.length,
                 itemBuilder: (BuildContext ctxt, int index) {
-                  return _generateItem(planets[index]);
+                  return _generateItem(planets[index], index);
                 }),
             Loader(
               isLoading: isLoading,
