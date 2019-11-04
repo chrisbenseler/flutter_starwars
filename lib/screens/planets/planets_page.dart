@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starwars/shared/screen_arguments.dart';
 
 import '../../models/planet.dart';
 import '../../services/api.dart';
@@ -33,11 +34,8 @@ class _PlanetsState extends State<Planets> {
         )),
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () {
-          // do something else
-          debugPrint('long press');
-          Navigator.of(context).pushNamed('/planets/detail', arguments: {
-            index
-          });
+          final ScreenArguments arguments = new ScreenArguments(index.toString());
+          Navigator.of(context).pushNamed('/planets/detail', arguments: arguments);
         },
       ),
     );

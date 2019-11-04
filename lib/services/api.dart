@@ -24,6 +24,17 @@ class API {
     };
   }
 
+  static Future getPlanet(String id) async {
+    String url = BASE_URL + 'planets/' + id;
+
+    final response = await http.get(url);
+
+    final planetRaw = json.decode(response.body);
+
+    Planet planet = Planet.fromJson(planetRaw);
+    return planet;
+  }
+
   static Future<ResponseGetMovies> getMovies(int page) async {
     final String url = BASE_URL + 'films/?page=' + page.toString();
     final response = await http.get(url);
