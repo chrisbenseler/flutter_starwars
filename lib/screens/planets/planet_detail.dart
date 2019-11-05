@@ -24,7 +24,6 @@ class _PlanetDetailState extends State<PlanetDetail> {
     if(isLoading == false) {
       return;
     }
-    debugPrint('init state');
 
     Planet _planet = await API.getPlanet(planetId);
     setState(() {
@@ -45,6 +44,8 @@ class _PlanetDetailState extends State<PlanetDetail> {
         title: new Text(!isLoading ? ('Planet: ' + planet.name) : 'Planet...'),
       ),
       body: Container(
+        padding: EdgeInsets.all(20.0),
+        constraints: BoxConstraints.expand(),
         child: isLoading ?
           LoadingIndicator(
             indicatorType: Indicator.orbit,
@@ -52,7 +53,21 @@ class _PlanetDetailState extends State<PlanetDetail> {
           )
           :
           Card(
-
+            borderOnForeground: true,
+            child: Column(
+              children: <Widget>[
+                new Text('Population: ' + planet.population.toString()),
+                new Text('Terrain: ' + planet.terrain.toString()),
+                new Text('Movies'),
+                new Column(
+                  children:
+                    planet.films.map( (film) {
+                      return new Text(film);
+                    }).toList()
+                  ,
+                )
+              ],
+            ),
           )
         ,
       ),
