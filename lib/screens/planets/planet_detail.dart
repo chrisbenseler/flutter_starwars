@@ -1,10 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_starwars/models/planet.dart';
 import 'package:flutter_starwars/shared/movies_list.dart';
 import 'package:flutter_starwars/shared/screen_arguments.dart';
-import 'package:loading_indicator/loading_indicator.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import '../../services/api.dart';
 
 class PlanetDetail extends StatefulWidget {
@@ -18,13 +16,29 @@ class PlanetDetail extends StatefulWidget {
 
 class _PlanetDetailState extends State<PlanetDetail> {
 
+  ProgressDialog pr;
+
   Planet planet;
   bool isLoading = true;
 
-  void _getPlanet(planetId) async {
+  Future openLoader$(pr) async {
+    await Future.delayed(Duration(milliseconds: 100));
+    pr.show();
+  }
+
+  Future closeLoader$(pr) async {
+    await Future.delayed(Duration(milliseconds: 100));
+    pr.hide();
+  }
+
+  void _getPlanet(planetId, ProgressDialog pr) async {
     if(isLoading == false) {
+      closeLoader$(pr);
       return;
     }
+
+    openLoader$(pr);
+
 
     Planet _planet = await API.getPlanet(planetId);
 
@@ -37,12 +51,20 @@ class _PlanetDetailState extends State<PlanetDetail> {
 
   @override
   Widget build(BuildContext context) {
+
+    if(pr == null) {
+      pr = new ProgressDialog(context);
+      pr.style(message: 'Please wait...');
+    }
+    
+    
     
     final ScreenArguments args = ModalRoute.of(context).settings.arguments;
 
-    _getPlanet(args.id.toString());
+    _getPlanet(args.id.toString(), pr);
     
     return Scaffold(
+
       appBar: new AppBar(
         title: new Text(!isLoading ? ('Planet: ' + planet.name) : 'Planet...'),
       ),
@@ -50,10 +72,7 @@ class _PlanetDetailState extends State<PlanetDetail> {
         padding: EdgeInsets.all(20.0),
         constraints: BoxConstraints.expand(),
         child: isLoading ?
-          LoadingIndicator(
-            indicatorType: Indicator.orbit,
-            
-          )
+          new Text('')
           :
           Card(
             borderOnForeground: true,

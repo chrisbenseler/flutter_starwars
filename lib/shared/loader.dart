@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
-class Loader extends StatelessWidget {
+class Loader extends StatefulWidget {
   bool isLoading;
 
   Loader({this.isLoading});
 
   @override
+  _LoaderState createState() => _LoaderState();
+}
+
+class _LoaderState extends State<Loader> {
+  @override
   Widget build(BuildContext context) {
-    return isLoading
+    return widget.isLoading
         ? new Align(
             child: new Container(
               width: 70.0,
