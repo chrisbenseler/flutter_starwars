@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_starwars/models/planet.dart';
+import 'package:flutter_starwars/shared/movies_list.dart';
 import 'package:flutter_starwars/shared/screen_arguments.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import '../../services/api.dart';
@@ -26,6 +27,7 @@ class _PlanetDetailState extends State<PlanetDetail> {
     }
 
     Planet _planet = await API.getPlanet(planetId);
+
     setState(() {
       isLoading = false;
       planet = _planet;
@@ -37,7 +39,8 @@ class _PlanetDetailState extends State<PlanetDetail> {
   Widget build(BuildContext context) {
     
     final ScreenArguments args = ModalRoute.of(context).settings.arguments;
-    _getPlanet(args.id);
+
+    _getPlanet(args.id.toString());
     
     return Scaffold(
       appBar: new AppBar(
@@ -58,14 +61,7 @@ class _PlanetDetailState extends State<PlanetDetail> {
               children: <Widget>[
                 new Text('Population: ' + planet.population.toString()),
                 new Text('Terrain: ' + planet.terrain.toString()),
-                new Text('Movies'),
-                new Column(
-                  children:
-                    planet.films.map( (film) {
-                      return new Text(film);
-                    }).toList()
-                  ,
-                )
+                new MoviesList(moviesList: planet.films)
               ],
             ),
           )

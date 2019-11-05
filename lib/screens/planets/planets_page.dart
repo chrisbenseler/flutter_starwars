@@ -34,7 +34,10 @@ class _PlanetsState extends State<Planets> {
         )),
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () {
-          final ScreenArguments arguments = new ScreenArguments(index.toString());
+          String id = item.url.split('https://swapi.co/api/planets/')[1]; 
+          debugPrint('id');
+          debugPrint(id);
+          final ScreenArguments arguments = new ScreenArguments(id);
           Navigator.of(context).pushNamed('/planets/detail', arguments: arguments);
         },
       ),

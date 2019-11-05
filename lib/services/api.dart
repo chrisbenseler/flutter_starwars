@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
 
 import './../models/planet.dart';
@@ -26,7 +27,6 @@ class API {
 
   static Future getPlanet(String id) async {
     String url = BASE_URL + 'planets/' + id;
-
     final response = await http.get(url);
 
     final planetRaw = json.decode(response.body);
