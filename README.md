@@ -29,8 +29,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://www.linkedin.com/in/tadeutupinamba/"><img src="https://avatars3.githubusercontent.com/u/15824865?v=4" width="100px;" alt="Tadeu Tupinambá"/><br /><sub><b>Tadeu Tupinambá</b></sub></a><br /><a href="https://github.com/chrisbenseler/flutter_starwars/commits?author=tupizz" title="Documentation">📖</a> <a href="https://github.com/chrisbenseler/flutter_starwars/commits?author=tupizz" title="Code">💻</a></td>
-    <td align="center"><a href="http://www.chrisb.com.br"><img src="https://avatars1.githubusercontent.com/u/1225447?v=4" width="100px;" alt="Christian Benseler"/><br /><sub><b>Christian Benseler</b></sub></a><br /><a href="https://github.com/chrisbenseler/flutter_starwars/commits?author=chrisbenseler" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/tadeutupinamba/"><img src="https://avatars3.githubusercontent.com/u/15824865?v=4" width="100px;" alt="Tadeu Tupinambá"/><br /><sub><b>Tadeu Tupinambá</b></sub></a><br /><a href="#ideas-tupizz" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/chrisbenseler/flutter_starwars/commits?author=tupizz" title="Code">💻</a> <a href="https://github.com/chrisbenseler/flutter_starwars/issues?q=author%3Atupizz" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://www.chrisb.com.br"><img src="https://avatars1.githubusercontent.com/u/1225447?v=4" width="100px;" alt="Christian Benseler"/><br /><sub><b>Christian Benseler</b></sub></a><br /><a href="https://github.com/chrisbenseler/flutter_starwars/commits?author=chrisbenseler" title="Documentation">📖</a> <a href="https://github.com/chrisbenseler/flutter_starwars/commits?author=chrisbenseler" title="Code">💻</a> <a href="#projectManagement-chrisbenseler" title="Project Management">📆</a></td>
   </tr>
 </table>
 

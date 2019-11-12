@@ -16,8 +16,9 @@
       "avatar_url": "https://avatars3.githubusercontent.com/u/15824865?v=4",
       "profile": "https://www.linkedin.com/in/tadeutupinamba/",
       "contributions": [
-        "doc",
-        "code"
+        "ideas",
+        "code",
+        "bug"
       ]
     },
     {
@@ -26,7 +27,9 @@
       "avatar_url": "https://avatars1.githubusercontent.com/u/1225447?v=4",
       "profile": "http://www.chrisb.com.br",
       "contributions": [
-        "doc"
+        "doc",
+        "code",
+        "projectManagement"
       ]
     }
   ],
