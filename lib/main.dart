@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starwars/screens/movies/movie_detail.dart';
 
 import 'screens/home/home_page.dart';
 import 'screens/planets/planet_detail.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
           '/home': (context) => new Home(),
           '/planets/detail': (context) => new PlanetDetail(),
           '/planets': (context) => new Planets(),
+          '/movies/detail': (context) => new MovieDetail(),
           '/movies': (context) => new MoviesPage(),
         },
         home: Home(),
