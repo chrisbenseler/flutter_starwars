@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starwars/models/api.dart';
 
 import './../../models/movie.dart';
 import '../../services/api.dart';

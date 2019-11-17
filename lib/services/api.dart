@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_starwars/models/api.dart';
 import 'package:http/http.dart' as http;
 
 import './../models/planet.dart';
@@ -49,18 +50,15 @@ class API {
       next: json.decode(response.body)['next'] != null,
     );
   }
+
+  static Future getMovie(String id) async {
+    String url = BASE_URL + 'movies/' + id;
+    final response = await http.get(url);
+
+    final movieRaw = json.decode(response.body);
+
+    Movie movie = Movie.fromJson(movieRaw);
+    return movie;
+  }
 }
 
-class ResponseGetMovies {
-  final List<Movie> movies;
-  final bool next;
-
-  const ResponseGetMovies({this.movies, this.next});
-}
-
-class ResponseGetPlanets {
-  final List<Planet> planets;
-  final bool next;
-
-  const ResponseGetPlanets({this.planets, this.next});
-}

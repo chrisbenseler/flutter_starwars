@@ -24,7 +24,7 @@ class MovieList extends StatelessWidget {
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () {
           Navigator.pushNamed(ctx, '/movies/detail', arguments: {
-            movie.episodeId
+            movie.episodeId.toString()
           });
         },
       ),
