@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_starwars/models/planet.dart';
-import 'package:flutter_starwars/shared/movies_list.dart';
-import 'package:flutter_starwars/shared/screen_arguments.dart';
 import 'package:progress_dialog/progress_dialog.dart';
+
+import '../../models/planet.dart';
+import '../../shared/inner_movies_list.dart';
+import '../../shared/screen_arguments.dart';
 import '../../services/api.dart';
 
-class PlanetDetail extends StatefulWidget {
+class PlanetDetailPage extends StatefulWidget {
   
-  PlanetDetail({Key key}) : super(key: key);
+  PlanetDetailPage({Key key}) : super(key: key);
   
 
   @override
-  _PlanetDetailState createState() => _PlanetDetailState();
+  _PlanetDetailPageState createState() => _PlanetDetailPageState();
 }
 
-class _PlanetDetailState extends State<PlanetDetail> {
+class _PlanetDetailPageState extends State<PlanetDetailPage> {
 
   ProgressDialog pr;
 
@@ -80,7 +81,7 @@ class _PlanetDetailState extends State<PlanetDetail> {
               children: <Widget>[
                 new Text('Population: ' + planet.population.toString()),
                 new Text('Terrain: ' + planet.terrain.toString()),
-                new MoviesList(moviesList: planet.films)
+                new InnerMoviesList(moviesList: planet.films)
               ],
             ),
           )

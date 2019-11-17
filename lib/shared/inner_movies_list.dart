@@ -2,11 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_starwars/shared/screen_arguments.dart';
 
-class MoviesList extends StatelessWidget {
+class InnerMoviesList extends StatelessWidget {
   List<dynamic> moviesList;
 
-
-  MoviesList({ this.moviesList });
+  InnerMoviesList({ this.moviesList });
 
   @override
   Widget build(BuildContext context) {
