@@ -26,8 +26,9 @@ class API {
     };
   }
 
-  static Future getPlanet(String id) async {
+  static Future<Planet> getPlanet(String id) async {
     String url = BASE_URL + 'planets/' + id;
+
     final response = await http.get(url);
 
     final planetRaw = json.decode(response.body);
@@ -52,7 +53,7 @@ class API {
   }
 
   static Future getMovie(String id) async {
-    String url = BASE_URL + 'movies/' + id;
+    String url = BASE_URL + 'films/' + id;
     final response = await http.get(url);
 
     final movieRaw = json.decode(response.body);

@@ -20,7 +20,10 @@ class InnerMoviesList extends StatelessWidget {
                 title: new Text(film),
                 trailing: Icon(Icons.keyboard_arrow_right),
                 onTap: () {
-                  String id = film.split('https://swapi.co/api/films/')[1]; 
+                  String id = film.split('https://swapi.co/api/films/')[1];
+                  if(id.indexOf('/') > 0 ) {
+                    id = id.split('/')[0];
+                  }
                   final ScreenArguments arguments = new ScreenArguments(id);
                   Navigator.of(context).pushNamed('/movies/detail', arguments: arguments);
                 },

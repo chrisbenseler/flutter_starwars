@@ -28,15 +28,13 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   }
 
   void _getMovie(movieId, ProgressDialog pr) async {
+    
     if(isLoading == false) {
       closeLoader$(pr);
       return;
     }
 
     openLoader$(pr);
-
-    debugPrint('xxxx');
-    debugPrint(movieId);
 
 
     Movie _movie = await API.getMovie(movieId);
@@ -56,12 +54,31 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       pr.style(message: 'Please wait...');
     }
     
-    
     final ScreenArguments args = ModalRoute.of(context).settings.arguments;
 
     _getMovie(args.id.toString(), pr);
-    return Container(
-       child: new Text('test'),
+    
+    return Scaffold(
+
+      appBar: new AppBar(
+        title: new Text(!isLoading ? ('Movie: ' + movie.title) : 'Movie...'),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        constraints: BoxConstraints.expand(),
+        child: isLoading ?
+          new Text('')
+          :
+          Card(
+            borderOnForeground: true,
+            child: Column(
+              children: <Widget>[
+                new Text('Director: ' + movie.director)
+              ],
+            ),
+          )
+        ,
+      ),
     );
   }
 }
