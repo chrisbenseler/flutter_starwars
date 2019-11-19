@@ -52,7 +52,7 @@ class API {
     );
   }
 
-  static Future getMovie(String id) async {
+  static Future<Movie> getMovie(String id) async {
     String url = BASE_URL + 'films/' + id;
     final response = await http.get(url);
 
