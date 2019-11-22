@@ -17,6 +17,7 @@ class _PlanetDetailPageState extends State<PlanetDetailPage> {
   Future<Planet> planet$;
 
   ProgressDialog pr;
+  bool hasLoaded = false;
 
   @override
   void initState() {
@@ -51,9 +52,12 @@ class _PlanetDetailPageState extends State<PlanetDetailPage> {
             )
           );
         }
-        Future.delayed(Duration(milliseconds: 10)).then((_) {
-          pr.dismiss();
-        });
+        if(hasLoaded == false) {
+          Future.delayed(Duration(milliseconds: 10)).then((_) {
+            pr.dismiss();
+          });
+          hasLoaded = true;
+        }
         Planet planet = snapshot.data;
         return Scaffold(
           appBar: AppBar(

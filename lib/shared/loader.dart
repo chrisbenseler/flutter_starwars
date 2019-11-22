@@ -19,7 +19,9 @@ class _LoaderState extends State<Loader> {
               height: 70.0,
               child: new Padding(
                   padding: const EdgeInsets.all(5.0),
-                  child: new Center(child: new CircularProgressIndicator())),
+                  child: new Center(child: new CircularProgressIndicator(
+                    valueColor: new AlwaysStoppedAnimation<Color>(Colors.yellow)
+                  ))),
             ),
             alignment: FractionalOffset.bottomCenter,
           )

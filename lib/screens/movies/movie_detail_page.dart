@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_starwars/models/movie.dart';
 import 'package:flutter_starwars/services/api.dart';
 import 'package:flutter_starwars/shared/screen_arguments.dart';
+import 'package:intl/intl.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 class MovieDetailPage extends StatefulWidget {
@@ -15,7 +16,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
   ProgressDialog pr;
 
   Movie movie;
-  bool isLoading = true;
+  bool hasLoaded = false;
 
   @override
   void initState() {
@@ -49,9 +50,13 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
               )
             );
           }
-          Future.delayed(Duration(milliseconds: 10)).then((_) {
-            pr.dismiss();
-          });
+          if(hasLoaded == false) {
+            Future.delayed(Duration(milliseconds: 10)).then((_) {
+              pr.dismiss();
+            });
+            hasLoaded = true;
+          }
+          
           
           Movie movie = snapshot.data;
           return Scaffold(
@@ -65,7 +70,22 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
               child: new Column(
                   children: <Widget>[
                     new Text('Director: ' + movie.director),
+                    new Text('Producer: ' + movie.producer),
+                    new Text('Release date: ' + DateFormat('d/M/y').format(DateTime.parse(movie.releaseDate))),
                     SizedBox( height: 10.0, ),
+                    new Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        new Card(
+                          child: new  Padding(
+                            padding: EdgeInsets.all(15.0),
+                            child: new Text(movie.openingCrawl.replaceAll("\n", " ")),
+                          ),
+                        )
+                      ],
+                    )
+                    
                    
                   ],
                 ),
