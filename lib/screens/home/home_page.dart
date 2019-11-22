@@ -7,14 +7,20 @@ class Home extends StatelessWidget {
     return new Container(
         padding: EdgeInsets.all(20.0),
         child: new RaisedButton(
-        child: new Column(
-          children: <Widget>[
-            new Padding(padding: EdgeInsets.all(10.0),),
-            icon,
-            new Text(label, style: TextStyle(fontSize: 20.0))
-          ],
-        ),
-        onPressed: () => Navigator.of(context).pushNamed(url),
+          color: Colors.white70,
+          shape: RoundedRectangleBorder(
+            borderRadius: new BorderRadius.circular(200.0),
+            side: BorderSide(color: Colors.yellow)
+          ),
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              icon,
+              new Text(label, style: TextStyle(fontSize: 24.0))
+            ],
+          ),
+          onPressed: () => Navigator.of(context).pushNamed(url),
       )
     );
   }
@@ -27,6 +33,7 @@ class Home extends StatelessWidget {
           title: new Text('Star Wars API'),
         ),
         body: GridView.count(
+          padding: EdgeInsets.only(top: 32.0),
           crossAxisCount: 2,
           children: <Widget>[
             _menuItem('Planets', '/planets', new Icon(Icons.location_on, size: 48.0,), context),

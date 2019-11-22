@@ -24,14 +24,6 @@ class _PlanetsState extends State<Planets> {
       padding: const EdgeInsets.all(16.0),
       child: ListTile(
         title: new Text(item.name, style: new TextStyle(fontSize: 24.0)),
-        subtitle: new Container(
-            child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            new Text('Population ' + item.population,
-                style: new TextStyle(fontSize: 14.0)),
-          ],
-        )),
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () {
           String id = item.url.split('https://swapi.co/api/planets/')[1]; 

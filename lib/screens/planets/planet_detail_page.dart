@@ -26,14 +26,16 @@ class _PlanetDetailPageState extends State<PlanetDetailPage> {
     Future.delayed(Duration(milliseconds: 10)).then((_) {
       final ScreenArguments args = ModalRoute.of(context).settings.arguments;
       pr = new ProgressDialog(context);
-      pr.style(message: 'Please wait...');
+      pr.style(
+          message: 'Please wait...',
+          progressWidget: CircularProgressIndicator(
+              valueColor: new AlwaysStoppedAnimation<Color>(Colors.yellow)));
       pr.show();
       _getPlanet(args.id);
     });
   }
 
   _getPlanet(String id) {
-    
     setState(() {
       planet$ = API.getPlanet(id);
     });
@@ -41,18 +43,16 @@ class _PlanetDetailPageState extends State<PlanetDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return FutureBuilder<Planet>(
       future: planet$,
       builder: (context, snapshot) {
-        if(snapshot.hasData == false) {
+        if (snapshot.hasData == false) {
           return Scaffold(
-            appBar: new AppBar(
-              title: new Text('Planet'),
-            )
-          );
+              appBar: new AppBar(
+            title: new Text('Planet'),
+          ));
         }
-        if(hasLoaded == false) {
+        if (hasLoaded == false) {
           Future.delayed(Duration(milliseconds: 10)).then((_) {
             pr.dismiss();
           });
@@ -67,13 +67,15 @@ class _PlanetDetailPageState extends State<PlanetDetailPage> {
             padding: EdgeInsets.all(20.0),
             constraints: BoxConstraints.expand(),
             child: new Column(
-                children: <Widget>[
-                  new Text('Population: ' + planet.population.toString()),
-                  new Text('Terrain: ' + planet.terrain.toString()),
-                  SizedBox( height: 10.0, ),
-                  new InnerMoviesList(moviesList: planet.films)
-                ],
-              ),
+              children: <Widget>[
+                new Text('Population: ' + planet.population.toString()),
+                new Text('Terrain: ' + planet.terrain.toString()),
+                SizedBox(
+                  height: 10.0,
+                ),
+                new InnerMoviesList(moviesList: planet.films)
+              ],
+            ),
           ),
         );
       },
