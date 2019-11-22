@@ -9,11 +9,15 @@ class InnerMoviesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return new Column(
-      children: <Widget>[
-        new Text('Movies'),
-        new Column(
+
+    return new Card(child:
+      Column(
+        children: <Widget>[
+          new Padding(
+            padding: EdgeInsets.all(10.0),
+            child: new Text('Movies', style: TextStyle(fontSize: 24.0),),
+          ),
+          new Column(
           children:
             moviesList.map( (film) {
               return new ListTile(
@@ -31,8 +35,10 @@ class InnerMoviesList extends StatelessWidget {
             }).toList()
           ,
         )
-      ],
+        ],
+      )
     );
+ 
   }
 
 }

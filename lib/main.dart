@@ -23,5 +23,17 @@ class MyApp extends StatelessWidget {
           
         },
         home: Home(),
+        theme: ThemeData(
+          primaryColor: Colors.black,
+          primaryTextTheme: TextTheme(
+            title: TextStyle(
+              color: Colors.yellow
+            )
+          ),
+          primaryIconTheme: const IconThemeData.fallback().copyWith(
+            color: Colors.yellow,
+          ),
+        ),
+        
       );
 }

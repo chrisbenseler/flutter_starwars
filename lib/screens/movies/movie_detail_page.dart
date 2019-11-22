@@ -42,53 +42,36 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
         future: movie$,
         builder: (context, snapshot) {
 
-          if(snapshot.hasData) {
-            Future.delayed(Duration(milliseconds: 10)).then((_) {
-              pr.dismiss();
-            });
+          if(snapshot.hasData == false) {
+            return Scaffold(
+              appBar: new AppBar(
+                title: new Text('Movie...'),
+              )
+            );
           }
+          Future.delayed(Duration(milliseconds: 10)).then((_) {
+            pr.dismiss();
+          });
+          
+          Movie movie = snapshot.data;
           return Scaffold(
             appBar: new AppBar(
               title:
-                  new Text(snapshot.hasData ? ('Movie: ' + snapshot.data.title) : 'Movie...'),
+                  new Text('Movie: ' + movie.title),
             ),
             body: Container(
               padding: EdgeInsets.all(20.0),
               constraints: BoxConstraints.expand(),
-              child: snapshot.hasData ? Card(
-                      borderOnForeground: true,
-                      child: Column(
-                        children: <Widget>[
-                          new Text('Director: ' + snapshot.data.director)
-                        ],
-                      ),
-                    ) :  new Text(''),
+              child: new Column(
+                  children: <Widget>[
+                    new Text('Director: ' + movie.director),
+                    SizedBox( height: 10.0, ),
+                   
+                  ],
+                ),
             ),
           );
         });
-    /*
-    return Scaffold(
-
-      appBar: new AppBar(
-        title: new Text(!isLoading ? ('Movie: ' + movie.title) : 'Movie...'),
-      ),
-      body: Container(
-        padding: EdgeInsets.all(20.0),
-        constraints: BoxConstraints.expand(),
-        child: isLoading ?
-          new Text('')
-          :
-          Card(
-            borderOnForeground: true,
-            child: Column(
-              children: <Widget>[
-                new Text('Director: ' + movie.director)
-              ],
-            ),
-          )
-        ,
-      ),
-    );
-    */
+    
   }
 }

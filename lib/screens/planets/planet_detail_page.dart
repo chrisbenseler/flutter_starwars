@@ -66,6 +66,7 @@ class _PlanetDetailPageState extends State<PlanetDetailPage> {
                 children: <Widget>[
                   new Text('Population: ' + planet.population.toString()),
                   new Text('Terrain: ' + planet.terrain.toString()),
+                  SizedBox( height: 10.0, ),
                   new InnerMoviesList(moviesList: planet.films)
                 ],
               ),
