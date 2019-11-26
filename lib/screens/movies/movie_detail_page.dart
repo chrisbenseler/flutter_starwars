@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_starwars/models/movie.dart';
 import 'package:flutter_starwars/services/api.dart';
+import 'package:flutter_starwars/shared/inner_characters_list.dart';
 import 'package:flutter_starwars/shared/screen_arguments.dart';
 import 'package:intl/intl.dart';
 import 'package:progress_dialog/progress_dialog.dart';
@@ -66,7 +67,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
             body: Container(
               padding: EdgeInsets.all(20.0),
               constraints: BoxConstraints.expand(),
-              child: new Column(
+              child: new ListView(
                 children: <Widget>[
                   new Text('Director: ' + movie.director),
                   new Text('Producer: ' + movie.producer),
@@ -88,7 +89,11 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                         ),
                       )
                     ],
-                  )
+                  ),
+                  SizedBox(
+                    height: 10.0,
+                  ),
+                  new InnerCharactersList(charactersList: movie.characters)
                 ],
               ),
             ),

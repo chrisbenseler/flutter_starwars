@@ -5,6 +5,7 @@ class Movie {
   String director;
   String producer;
   String releaseDate;
+  List<dynamic> characters;
 
   Movie(
       {this.title,
@@ -12,7 +13,8 @@ class Movie {
       this.openingCrawl,
       this.director,
       this.producer,
-      this.releaseDate});
+      this.releaseDate,
+      this.characters});
 
   Movie.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -21,6 +23,7 @@ class Movie {
     director = json['director'];
     producer = json['producer'];
     releaseDate = json['release_date'];
+    characters = json['characters'];
   }
 
   Map<String, dynamic> toJson() {
@@ -31,6 +34,7 @@ class Movie {
     data['director'] = this.director;
     data['producer'] = this.producer;
     data['release_date'] = this.releaseDate;
+    data['characters'] = this.characters;
     return data;
   }
 }
