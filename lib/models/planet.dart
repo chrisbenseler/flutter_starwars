@@ -4,6 +4,13 @@ class Planet {
   String terrain;
   List<dynamic> films;
   String url;
+  String rotationPeriod;
+  String orbitalPeriod;
+  String diameter;
+	String climate;
+	String gravity;
+	String surfaceWater;
+	List<dynamic> residents;
 
   Planet({this.name, this.population, this.films, this.terrain});
 
@@ -12,5 +19,12 @@ class Planet {
         terrain = jsonMap['terrain'],
         url = jsonMap['url'],
         films = jsonMap['films'],
-        population = jsonMap['population'];
+        population = jsonMap['population'],
+        rotationPeriod = jsonMap['rotation_period'],
+        orbitalPeriod = jsonMap['orbital_period'],
+        diameter = jsonMap['diameter'],
+        climate = jsonMap['climate'],
+        gravity = jsonMap['gravity'],
+        surfaceWater = jsonMap['surface_water'],
+        residents = jsonMap['residents'];
 }

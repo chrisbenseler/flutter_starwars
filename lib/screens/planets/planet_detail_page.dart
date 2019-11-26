@@ -68,8 +68,14 @@ class _PlanetDetailPageState extends State<PlanetDetailPage> {
             constraints: BoxConstraints.expand(),
             child: new Column(
               children: <Widget>[
-                new Text('Population: ' + planet.population.toString()),
-                new Text('Terrain: ' + planet.terrain.toString()),
+                new Text('Population: ' + planet.population),
+                new Text('Terrain: ' + planet.terrain),
+                new Text('Rotation period: ' + planet.rotationPeriod),
+                new Text('Orbital period: ' + planet.orbitalPeriod),
+                new Text('Diameter: ' + planet.diameter),
+                new Text('Climate: ' + planet.climate),
+                new Text('Gravity: ' + planet.gravity),
+                new Text('Surface water: ' + planet.surfaceWater),
                 SizedBox(
                   height: 10.0,
                 ),
