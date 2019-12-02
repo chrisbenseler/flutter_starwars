@@ -29,7 +29,7 @@ class InnerCharactersList extends StatelessWidget {
                     id = id.split('/')[0];
                   }
                   final ScreenArguments arguments = new ScreenArguments(id);
-                  Navigator.of(context).pushNamed('/characters/detail', arguments: arguments);
+                  Navigator.of(context).pushNamed('/people/detail', arguments: arguments);
                 },
               );
             }).toList()

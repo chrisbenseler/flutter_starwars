@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_starwars/models/api.dart';
+import 'package:flutter_starwars/models/people.dart';
 import 'package:http/http.dart' as http;
 
 import './../models/planet.dart';
@@ -61,5 +62,16 @@ class API {
     Movie movie = Movie.fromJson(movieRaw);
     return movie;
   }
+
+  static Future<People> getPeople(String id) async {
+    String url = BASE_URL + 'people/' + id;
+    final response = await http.get(url);
+
+    final peopleRaw = json.decode(response.body);
+
+    People people = People.fromJson(peopleRaw);
+    return people;
+  }
+
 }
 
