@@ -78,6 +78,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                     height: 10.0,
                   ),
                   new Column(
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
