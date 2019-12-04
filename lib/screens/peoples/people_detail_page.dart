@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starwars/shared/inner_expandable_list.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 import '../../models/people.dart';
-import '../../shared/inner_movies_list.dart';
+
 import '../../shared/screen_arguments.dart';
 import '../../services/api.dart';
 
@@ -80,8 +81,18 @@ class _PeopleDetailPageState extends State<PeopleDetailPage> {
                 SizedBox(
                   height: 10.0,
                 ),
-                new InnerMoviesList(moviesList: people.films)
-                
+                new InnerExpandableList(itemsList: people.films, title: 'Movies', onTap: (movie) {
+                  String id = movie.split('https://swapi.co/api/films/')[1];
+                  if (id.indexOf('/') > 0) {
+                    id = id.split('/')[0];
+                  }
+                  final ScreenArguments arguments = new ScreenArguments(id);
+                  Navigator.of(context)
+                      .pushNamed('/movies/detail', arguments: arguments);
+                }),
+                new InnerExpandableList(itemsList: people.species, title: 'Species', onTap: (specie) {
+                  
+                })
               ],
             ),
           ),

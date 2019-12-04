@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_starwars/models/movie.dart';
 import 'package:flutter_starwars/services/api.dart';
-import 'package:flutter_starwars/shared/inner_characters_list.dart';
+
+import 'package:flutter_starwars/shared/inner_expandable_list.dart';
 import 'package:flutter_starwars/shared/screen_arguments.dart';
 import 'package:intl/intl.dart';
 import 'package:progress_dialog/progress_dialog.dart';
@@ -94,7 +95,15 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                   SizedBox(
                     height: 10.0,
                   ),
-                  new InnerCharactersList(charactersList: movie.characters)
+                  new InnerExpandableList(itemsList: movie.characters, title: 'Characters', onTap: (character) {
+                    String id = character.split('https://swapi.co/api/people/')[1];
+                    if (id.indexOf('/') > 0) {
+                      id = id.split('/')[0];
+                    }
+                    final ScreenArguments arguments = new ScreenArguments(id);
+                    Navigator.of(context)
+                        .pushNamed('/people/detail', arguments: arguments);
+                  })
                 ],
               ),
             ),
