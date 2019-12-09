@@ -1,3 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'movie.g.dart';
+
+@JsonSerializable()
+
 class Movie {
   String title;
   int episodeId;
@@ -14,6 +20,10 @@ class Movie {
       this.producer,
       this.releaseDate});
 
+    factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
+    Map<String, dynamic> toJson() => _$MovieToJson(this);
+
+/*
   Movie.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     episodeId = json['episode_id'];
@@ -33,4 +43,5 @@ class Movie {
     data['release_date'] = this.releaseDate;
     return data;
   }
+  */
 }
