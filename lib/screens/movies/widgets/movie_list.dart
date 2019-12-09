@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starwars/shared/screen_arguments.dart';
 import 'package:intl/intl.dart';
 
 import '../../../models/movie.dart';
@@ -23,9 +24,9 @@ class MovieList extends StatelessWidget {
         )),
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () {
-          Navigator.pushNamed(ctx, '/movies/detail', arguments: {
-            movie.episodeId.toString()
-          });
+          String id = movie.episodeId.toString();
+          final ScreenArguments arguments = new ScreenArguments(id);
+          Navigator.of(ctx).pushNamed('/movies/detail', arguments: arguments);
         },
       ),
     );

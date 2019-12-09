@@ -1,6 +1,8 @@
 # Flutter Star Wars
 Sample Flutter project, consuming [Star Wars API](https://swapi.co/).
 
+
+
 ## Getting Started
 
 Install dependencies

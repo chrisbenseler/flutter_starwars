@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_starwars/models/api.dart';
+import 'package:flutter_starwars/models/people.dart';
 import 'package:http/http.dart' as http;
 
 import './../models/planet.dart';
@@ -26,8 +27,9 @@ class API {
     };
   }
 
-  static Future getPlanet(String id) async {
+  static Future<Planet> getPlanet(String id) async {
     String url = BASE_URL + 'planets/' + id;
+
     final response = await http.get(url);
 
     final planetRaw = json.decode(response.body);
@@ -51,8 +53,8 @@ class API {
     );
   }
 
-  static Future getMovie(String id) async {
-    String url = BASE_URL + 'movies/' + id;
+  static Future<Movie> getMovie(String id) async {
+    String url = BASE_URL + 'films/' + id;
     final response = await http.get(url);
 
     final movieRaw = json.decode(response.body);
@@ -60,5 +62,16 @@ class API {
     Movie movie = Movie.fromJson(movieRaw);
     return movie;
   }
+
+  static Future<People> getPeople(String id) async {
+    String url = BASE_URL + 'people/' + id;
+    final response = await http.get(url);
+
+    final peopleRaw = json.decode(response.body);
+
+    People people = People.fromJson(peopleRaw);
+    return people;
+  }
+
 }
 
