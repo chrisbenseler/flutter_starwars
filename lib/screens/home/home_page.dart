@@ -15,29 +15,6 @@ class Home extends StatelessWidget {
           title: new Text('Star Wars API'),
         ),
         backgroundColor: Colors.black45,
-        drawer: Drawer(
-          
-          child: ListView(
-            children: [
-              DrawerHeader(
-                padding: EdgeInsets.zero,
-                child: Text('Drawer Header'),
-                decoration: BoxDecoration(
-                  color: Colors.black45,
-                ),
-              ),
-              ListTile(
-                title: Text('Item 1'),
-                onTap: () {
-                  // Update the state of the app
-                  // ...
-                  // Then close the drawer
-                  Navigator.pop(context);
-                },
-            )
-            ],
-          ),
-        ),
         body: ListView.builder(
           padding: EdgeInsets.all(10.0),
           itemCount: items.length,
