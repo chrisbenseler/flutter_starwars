@@ -9,18 +9,20 @@ part of 'movie.dart';
 Movie _$MovieFromJson(Map<String, dynamic> json) {
   return Movie(
       title: json['title'] as String,
-      episodeId: json['episodeId'] as int,
-      openingCrawl: json['openingCrawl'] as String,
+      episode_id: json['episode_id'] as int,
+      opening_crawl: json['opening_crawl'] as String,
       director: json['director'] as String,
       producer: json['producer'] as String,
-      releaseDate: json['releaseDate'] as String);
+      release_date: json['release_date'] as String,
+      characters: json['characters'] as List);
 }
 
 Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
       'title': instance.title,
-      'episodeId': instance.episodeId,
-      'openingCrawl': instance.openingCrawl,
+      'episode_id': instance.episode_id,
+      'opening_crawl': instance.opening_crawl,
       'director': instance.director,
       'producer': instance.producer,
-      'releaseDate': instance.releaseDate
+      'release_date': instance.release_date,
+      'characters': instance.characters
     };

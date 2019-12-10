@@ -74,7 +74,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                   new Text('Producer: ' + movie.producer),
                   new Text('Release date: ' +
                       DateFormat('d/M/y')
-                          .format(DateTime.parse(movie.releaseDate))),
+                          .format(DateTime.parse(movie.release_date))),
                   SizedBox(
                     height: 10.0,
                   ),
@@ -87,7 +87,7 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                         child: new Padding(
                           padding: EdgeInsets.all(15.0),
                           child: new Text(
-                              movie.openingCrawl.replaceAll("\n", " ")),
+                              movie.opening_crawl.replaceAll("\n", " ")),
                         ),
                       )
                     ],

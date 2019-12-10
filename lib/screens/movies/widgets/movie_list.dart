@@ -18,13 +18,13 @@ class MovieList extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(DateFormat('d/M/y').format(DateTime.parse(movie.releaseDate)),
+              Text(DateFormat('d/M/y').format(DateTime.parse(movie.release_date)),
                   style: TextStyle(fontSize: 14.0)),
             ],
         )),
         trailing: Icon(Icons.keyboard_arrow_right),
         onTap: () {
-          String id = movie.episodeId.toString();
+          String id = movie.episode_id.toString();
           final ScreenArguments arguments = new ScreenArguments(id);
           Navigator.of(ctx).pushNamed('/movies/detail', arguments: arguments);
         },
