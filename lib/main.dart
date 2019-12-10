@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_starwars/screens/species/specie_detail_page.dart';
 
 import 'screens/home/home_page.dart';
 import 'screens/peoples/people_detail_page.dart';
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
           '/movies/detail': (context) => new MovieDetailPage(),
           '/movies': (context) => new MoviesPage(),
 
-          '/people/detail': (context) => new PeopleDetailPage()
+          '/people/detail': (context) => new PeopleDetailPage(),
+          '/specie/detail': (context) => new SpecieDetailPage()
           
         },
         home: Home(),

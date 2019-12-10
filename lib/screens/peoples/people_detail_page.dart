@@ -91,7 +91,13 @@ class _PeopleDetailPageState extends State<PeopleDetailPage> {
                       .pushNamed('/movies/detail', arguments: arguments);
                 }),
                 new InnerExpandableList(itemsList: people.species, title: 'Species', onTap: (specie) {
-                  
+                  String id = specie.split('https://swapi.co/api/species/')[1];
+                  if (id.indexOf('/') > 0) {
+                    id = id.split('/')[0];
+                  }
+                  final ScreenArguments arguments = new ScreenArguments(id);
+                  Navigator.of(context)
+                      .pushNamed('/specie/detail', arguments: arguments);
                 })
               ],
             ),

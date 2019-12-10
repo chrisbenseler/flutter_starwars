@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/rendering.dart';
-import 'package:flutter_starwars/models/api.dart';
-import 'package:flutter_starwars/models/people.dart';
 import 'package:http/http.dart' as http;
 
 import './../models/planet.dart';
 import './../models/movie.dart';
+import './../models/api.dart';
+import './../models/people.dart';
+import './../models/specie.dart';
+
 
 const BASE_URL = 'https://swapi.co/api/';
 
@@ -71,6 +72,16 @@ class API {
 
     People people = People.fromJson(peopleRaw);
     return people;
+  }
+  
+  static Future<Specie> getSpecie(String id) async {
+    String url = BASE_URL + 'species/' + id;
+    final response = await http.get(url);
+
+    final specieRaw = json.decode(response.body);
+
+    Specie specie = Specie.fromJson(specieRaw);
+    return specie;
   }
 
 }
