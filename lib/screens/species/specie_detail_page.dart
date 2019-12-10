@@ -70,13 +70,53 @@ class _SpecieDetailPageState extends State<SpecieDetailPage> {
             child: new ListView(
               children: <Widget>[
                 new Text('Home world: ' + specie.homeworld),
-                new Text('Hair colors: ' + specie.hair_colors),
                 new Text('Language: ' + specie.language),
-                new Text('Skin color: ' + specie.skin_colors),
                 new Text('Classification: ' + specie.classification),
                 new Text('Designation: ' + specie.designation),
-                new Text('Eye colors: ' + specie.eye_colors),
                 new Text('Average lifespan: ' + specie.average_lifespan),
+                SizedBox(
+                  height: 10.0,
+                ),
+                Card(child: Column(
+                  children: <Widget>[
+                    Text('Eye colors'),
+                    new Wrap(
+                      spacing: 4.0, // gap between adjacent chips
+                      runSpacing: 2.0,
+                      children: specie.eye_colors.split(',').map( (color) => Chip(
+                        label: Text(color),
+                        //backgroundColor: new Color(color),
+                      ) ).toList(),
+                    )
+                  ],
+                ),),
+                Card(child: Column(
+                  children: <Widget>[
+                    Text('Hair colors'),
+                    new Wrap(
+                      spacing: 4.0, // gap between adjacent chips
+                      runSpacing: 2.0,
+                      children: specie.hair_colors.split(',').map( (color) => Chip(
+                        label: Text(color),
+                        //backgroundColor: new Color(color),
+                      ) ).toList(),
+                    )
+                  ],
+                ),),
+                Card(child: Column(
+                  children: <Widget>[
+                    Text('Skin colors'),
+                    new Wrap(
+                      spacing: 4.0, // gap between adjacent chips
+                      runSpacing: 2.0,
+                      children: specie.skin_colors.split(',').map( (color) => Chip(
+                        label: Text(color),
+                        //backgroundColor: new Color(color),
+                      ) ).toList(),
+                    )
+                  ],
+                ),),
+                
                 SizedBox(
                   height: 10.0,
                 ),
