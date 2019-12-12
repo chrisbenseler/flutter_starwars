@@ -15,9 +15,11 @@ class Home extends StatelessWidget {
     return CupertinoPageScaffold(
       
       child: Scaffold(
+        backgroundColor: Colors.black54,
         appBar: AppBar(
           title: new Text('Home'),
         ),
+        
         body: ListView.builder(
         padding: EdgeInsets.all(10.0),
         itemCount: items.length,

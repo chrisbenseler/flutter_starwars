@@ -30,7 +30,10 @@ class AppState extends State<App> {
       child: DefaultTextStyle(
         style: CupertinoTheme.of(context).textTheme.textStyle,
         child: CupertinoTabScaffold(
+          
           tabBar: CupertinoTabBar(
+            backgroundColor: Colors.black,
+            activeColor: Colors.white,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
