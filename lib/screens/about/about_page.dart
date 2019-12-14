@@ -8,7 +8,19 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: new Text('About')),
       body: Container(
-        child: new Text('About!'),
+        padding: EdgeInsets.all(10.0),
+        child: Card(
+          
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Column(
+              children: <Widget>[
+                Image.asset('assets/starwars.jpg'),
+                Container(child: Text('This app has been written on the top of the famous Star Wars API using Flutter.'),)
+              ],
+            )
+          ),
+        )
       ),
     );
   }
