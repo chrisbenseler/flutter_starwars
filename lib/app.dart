@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_starwars/screens/about/about_page.dart';
 import 'package:flutter_starwars/screens/home/home_page.dart';
+import 'package:flutter_starwars/screens/movies/movies_home.dart';
 
 import 'screens/movies/movie_detail_page.dart';
 import 'screens/movies/movies_page.dart';
@@ -21,6 +22,15 @@ class App extends StatefulWidget {
 class AppState extends State<App> {
   
   static const String routeName = '/';
+  var routes = {
+    '/planets/detail': (context) => new PlanetDetailPage(),
+    '/planets': (context) => new Planets(),
+    '/movies/detail': (context) => new MovieDetailPage(),
+    '/movies': (context) => new MoviesPage(),
+
+    '/people/detail': (context) => new PeopleDetailPage(),
+    '/specie/detail': (context) => new SpecieDetailPage()
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +46,12 @@ class AppState extends State<App> {
             activeColor: Colors.white,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text('Home'),
+                icon: Icon(Icons.movie),
+                title: Text('Movies'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                title: Text('Browse'),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.forum),
@@ -50,23 +64,23 @@ class AppState extends State<App> {
             switch (index) {
               case 0:
                 return CupertinoTabView(
-                  routes: {
-                    '/planets/detail': (context) => new PlanetDetailPage(),
-                    '/planets': (context) => new Planets(),
-                    '/movies/detail': (context) => new MovieDetailPage(),
-                    '/movies': (context) => new MoviesPage(),
-
-                    '/people/detail': (context) => new PeopleDetailPage(),
-                    '/specie/detail': (context) => new SpecieDetailPage()
-                    
+                  routes: routes,
+                  builder: (BuildContext context) {
+                    return MoviesHome();
                   },
+                  defaultTitle: 'Movies',
+                );
+                break;
+              case 1:
+                return CupertinoTabView(
+                  routes: routes,
                   builder: (BuildContext context) {
                     return Home();
                   },
                   defaultTitle: 'Home',
                 );
                 break;
-              case 1:
+              case 2:
                 return CupertinoTabView(
                   builder: (BuildContext context) {
                     return AboutPage();
