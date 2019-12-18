@@ -103,7 +103,19 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
                     final ScreenArguments arguments = new ScreenArguments(id);
                     Navigator.of(context)
                         .pushNamed('/people/detail', arguments: arguments);
-                  })
+                  }),
+                  new InnerExpandableList(itemsList: movie.planets, title: 'Planets', onTap: (planet) {
+                    String id = planet.split('https://swapi.co/api/planets/')[1];
+                    if (id.indexOf('/') > 0) {
+                      id = id.split('/')[0];
+                    }
+                    final ScreenArguments arguments = new ScreenArguments(id);
+                    Navigator.of(context)
+                        .pushNamed('/planets/detail', arguments: arguments);
+                  }),
+                  new InnerExpandableList(itemsList: movie.starships, title: 'Starships', onTap: null),
+                  new InnerExpandableList(itemsList: movie.vehicles, title: 'Vehicles', onTap: null),
+                  new InnerExpandableList(itemsList: movie.species, title: 'Species', onTap: null),
                 ],
               ),
             ),

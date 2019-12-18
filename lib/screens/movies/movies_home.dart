@@ -21,7 +21,7 @@ class MoviesHome extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.black54,
         appBar: AppBar(
-          title: new Text('Star Wars Movies'),
+          title: new Text('Star Wars Universe: the Movies'),
         ),
         
         body: ListView.builder(

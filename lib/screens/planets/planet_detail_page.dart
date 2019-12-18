@@ -88,6 +88,15 @@ class _PlanetDetailPageState extends State<PlanetDetailPage> {
                     final ScreenArguments arguments = new ScreenArguments(id);
                     Navigator.of(context)
                         .pushNamed('/movies/detail', arguments: arguments);
+                  }),
+                new InnerExpandableList(itemsList: planet.residents, title: 'Residents', onTap: (resident) {
+                    String id = resident.split('https://swapi.co/api/people/')[1];
+                    if (id.indexOf('/') > 0) {
+                      id = id.split('/')[0];
+                    }
+                    final ScreenArguments arguments = new ScreenArguments(id);
+                    Navigator.of(context)
+                        .pushNamed('/people/detail', arguments: arguments);
                   })
               ],
             ),

@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_starwars/models/planet.dart';
-import 'package:flutter_starwars/screens/planets/planets_page.dart';
 
 class Home extends StatelessWidget {
   const Home({Key key}) : super(key: key);
@@ -17,7 +15,7 @@ class Home extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.black54,
         appBar: AppBar(
-          title: new Text('Home'),
+          title: new Text('Browse the universe'),
         ),
         
         body: ListView.builder(

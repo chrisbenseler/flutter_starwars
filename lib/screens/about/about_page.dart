@@ -9,36 +9,40 @@ class AboutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: new Text('About')),
       body: Container(
-        padding: EdgeInsets.all(10.0),
-        child: Card(
-          
-          child: Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Column(
-              children: <Widget>[
-                Image.asset('assets/starwars.jpg'),
-                Container(child: Text('This app has been written on the top of the famous Star Wars API using Flutter.'),),
-                GestureDetector(
-                  onTap: () {
-                    launch("https://github.com/chrisbenseler/flutter_starwars");
-                  },
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.asset('assets/github.png'),
-                      Padding(
-                        padding: EdgeInsets.all(5.0),
-                      ),
-                      Text("Open project in Github: https://github.com/chrisbenseler/flutter_starwars")
-                    ],
-                  ) 
-                  
-                )
-              ],
-            )
-          ),
-        )
-      ),
+          padding: EdgeInsets.all(10.0),
+          child: Card(
+            child: Padding(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    FractionallySizedBox(
+                      widthFactor: 0.7,
+                      child: Image.asset('assets/starwars.jpg'),
+                    ),
+                    
+                    Container(
+                      child: Text(
+                          'This app has been written on the top of the famous Star Wars API using Flutter.'),
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          launch(
+                              "https://github.com/chrisbenseler/flutter_starwars");
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Image.asset('assets/github.png'),
+                            Padding(
+                              padding: EdgeInsets.all(5.0),
+                            ),
+                            Text(
+                                "Open project in Github: https://github.com/chrisbenseler/flutter_starwars")
+                          ],
+                        ))
+                  ],
+                )),
+          )),
     );
   }
 }

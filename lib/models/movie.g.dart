@@ -14,7 +14,11 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
       director: json['director'] as String,
       producer: json['producer'] as String,
       release_date: json['release_date'] as String,
-      characters: json['characters'] as List);
+      characters: json['characters'] as List,
+      planets: json['planets'] as List,
+      starships: json['starships'] as List,
+      vehicles: json['vehicles'] as List,
+      species: json['species'] as List);
 }
 
 Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
@@ -24,5 +28,9 @@ Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
       'director': instance.director,
       'producer': instance.producer,
       'release_date': instance.release_date,
-      'characters': instance.characters
+      'characters': instance.characters,
+      'planets': instance.planets,
+      'starships': instance.starships,
+      'vehicles': instance.vehicles,
+      'species': instance.species
     };

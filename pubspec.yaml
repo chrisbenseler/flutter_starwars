@@ -1,5 +1,5 @@
 name: flutter_starwars
-description: A new Flutter project.
+description: Star Wars Universe - a Flutter History
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -16,6 +16,9 @@ version: 1.0.0+1
 environment:
   sdk: '>=2.1.0 <3.0.0'
 
+flutter_launcher_name:
+  name: "Star Wars Universe"
+
 dependencies:
   flutter:
     sdk: flutter
@@ -27,7 +30,8 @@ dependencies:
   progress_dialog: ^1.2.0
   json_annotation: ^2.0.0
   url_launcher: ^5.4.1
-
+  flutter_launcher_name: "^0.0.1"
+  flutter_launcher_icons: ^0.7.2+1 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
@@ -76,3 +80,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_icons:    
+  android: "launcher_icon"    
+  ios: true    
+  image_path: "assets/icon.png"

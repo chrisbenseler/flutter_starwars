@@ -16,7 +16,7 @@ class InnerExpandableList extends StatelessWidget {
       children: itemsList.map((item) {
         return new ListTile(
           title: new Text(item),
-          trailing: Icon(Icons.keyboard_arrow_right),
+          trailing: this.onTap != null ? Icon(Icons.keyboard_arrow_right) : null,
           onTap: () {
             this.onTap(item);
           },

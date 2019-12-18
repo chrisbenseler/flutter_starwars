@@ -12,6 +12,10 @@ class Movie {
   String producer;
   String release_date;
   List<dynamic> characters;
+  List<dynamic> planets;
+  List<dynamic> starships;
+  List<dynamic> vehicles;
+  List<dynamic> species;
 
   Movie(
       {this.title,
@@ -20,7 +24,11 @@ class Movie {
       this.director,
       this.producer,
       this.release_date,
-      this.characters});
+      this.characters,
+      this.planets,
+      this.starships,
+      this.vehicles,
+      this.species});
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
   Map<String, dynamic> toJson() => _$MovieToJson(this);
